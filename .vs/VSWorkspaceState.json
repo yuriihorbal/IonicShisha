@@ -1,14 +1,15 @@
 {
   "ExpandedNodes": [
     "",
-    "\\resources",
     "\\resources\\android",
     "\\src",
     "\\src\\app",
     "\\src\\assets",
     "\\src\\pages",
-    "\\src\\pages\\home"
+    "\\src\\pages\\home",
+    "\\src\\pages\\list",
+    "\\src\\theme"
   ],
-  "SelectedNode": "\\src\\pages\\home\\home.html",
+  "SelectedNode": "\\src\\app\\app.module.ts",
   "PreviewInSolutionExplorer": false
 }
