@@ -1,3 +1,11 @@
-page-list {
+﻿page-home {
+  ion-card {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
 
+    ion-card-content {
+      padding: 3px 5px 10px 3px !important;
+    }
+  }
 }

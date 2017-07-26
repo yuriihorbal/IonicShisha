@@ -1,20 +1,19 @@
 ﻿<ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Listik</ion-title>
+    <ion-title>
+      Gallery
+    </ion-title>
+    <ion-buttons end="">
+      <button  (click)="addNewPhoto()" color="dark" ion-button="">
+        <ion-icon name="add"></ion-icon>  Add New
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
-
-<ion-content padding>
-  <button ion-button full (click)="captureImage()">Capture Image</button>
-  <button ion-button full (click)="sendEmail()">Send Email</button>
-
-  <ion-card>
-    <ion-card-header>Current image</ion-card-header>
-    <ion-card-content>
-      <img [src]="currentImage" *ngIf="currentImage" />
-    </ion-card-content>
+<ion-content>
+  <ion-card ngfor="let item of photos">
+    <img alt="" item.image_url="" src="">
+    
   </ion-card>
+
 </ion-content>

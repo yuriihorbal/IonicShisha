@@ -1,44 +1,41 @@
 ﻿import { Component } from '@angular/core';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { NavController, LoadingController } from 'ionic-angular';
+import { Newpost } from '../../pages/newpost/newpost';
+import { PostService } from '../../providers/post-service/post-service';
 
 @Component({
     selector: 'page-list',
     templateUrl: 'list.html'
 })
 export class ListPage {
+    posts: any;
+    constructor(public navCtrl: NavController,
+        private postService: PostService, private loadingCtrl: LoadingController
+    ) {
 
-    currentImage = null;
 
-    constructor( private camera: Camera, private emailComposer: EmailComposer) { }
+    }
 
-        captureImage() {
-            const options: CameraOptions = {
-                sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-                destinationType: this.camera.DestinationType.FILE_URI,
-            }
+    ionViewDidLoad() {
+        this.getPosts();
+    }
 
-            this.camera.getPicture(options).then((imageData) => {
-                this.currentImage = imageData;
-            }, (err) => {
-                // Handle error
-                console.log('Image error: ', err);
-            });
-        }
+    getPosts() {
+        let loader = this.loadingCtrl.create({
+            content: "Loading Photos..."
+        });
+        loader.present();
+        this.postService.getPosts().subscribe((val) => {
+            this.posts = val.posts;
+            loader.dismiss();
+        });
+    }
 
-        sendEmail() {
-            let email = {
-                to: 'yuriihorbal@gmail.com',
-                cc: 'yuriihorbal1@gmail.com',
-                attachments: [
-                    this.currentImage
-                ],
-                subject: 'My Cool Image',
-                body: 'Hey Simon, what do you thing about this image?',
-                isHtml: true
-            };
 
-            this.emailComposer.open(email);
-        }
-    
+
+
+    addNewPhoto() {
+        this.navCtrl.push(Newpost);
+    }
+
 }

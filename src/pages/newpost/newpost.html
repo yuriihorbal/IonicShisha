@@ -1,0 +1,41 @@
+﻿<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Gallery
+    </ion-title>
+    
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <div class="uploadWrap" ngif="imageChosen == 0">
+        <ion-icon  (click)="chooseImage()" name="cloud-upload"></ion-icon>
+      </div>
+      <div class="img-preview" ngif="imageChosen == 1">
+        <img alt="" imagepath="" src="">
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+
+        <ion-item>
+          <ion-label floating="">Post Title</ion-label>
+          <ion-input ngmodel="" posttitle="" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating="">Description</ion-label>
+          <ion-input desc="" ngmodel="" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <button (click)="uploadPhoto()" full="" ion-button="" >Upload Image</button>
+        </ion-item>
+
+      </ion-list>
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

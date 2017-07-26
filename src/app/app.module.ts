@@ -7,14 +7,17 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { Newpost } from '../pages/newpost/newpost';
 import { Camera } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
+import { PostService } from '../providers/post-service/post-service';
 
 @NgModule({
     declarations: [
         MyApp,
         HomePage,
-        ListPage
+        ListPage,
+        Newpost
     ],
     imports: [
         BrowserModule,
@@ -25,14 +28,16 @@ import { EmailComposer } from '@ionic-native/email-composer';
     entryComponents: [
         MyApp,
         HomePage,
-        ListPage
+        ListPage,
+        Newpost
     ],
     providers: [
         StatusBar,
         SplashScreen,
         EmailComposer,
         Camera,
-        { provide: ErrorHandler, useClass: IonicErrorHandler }
+        { provide: ErrorHandler, useClass: IonicErrorHandler },
+    PostService
     ]
 })
 export class AppModule { }
