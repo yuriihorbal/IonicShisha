@@ -11,9 +11,9 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-card ngfor="let item of photos">
-    <img alt="" item.image_url="" src="">
+  <ion-item text-wrap *ngFor="let item of newsData">
+    <img  src="{{item.image_url}}" />
     
-  </ion-card>
+  </ion-item>
 
 </ion-content>

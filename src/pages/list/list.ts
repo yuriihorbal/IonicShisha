@@ -1,36 +1,54 @@
 ﻿import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Newpost } from '../../pages/newpost/newpost';
-import { PostService } from '../../providers/post-service/post-service';
+import { PostService } from '../../providers/post-service';
+
 
 @Component({
     selector: 'page-list',
-    templateUrl: 'list.html'
+    templateUrl: 'list.html',
+    providers: [PostService]
+
 })
 export class ListPage {
-    posts: any;
-    constructor(public navCtrl: NavController,
+    newsData: any;
+    loading: any;
+    
+    constructor(public navCtrl: NavController, 
         private postService: PostService, private loadingCtrl: LoadingController
     ) {
+        this.loading = this.loadingCtrl.create({
+            content: `
+  <ion-spinner ></ion-spinner>`
+        });
 
-
+        this.getdata();
     }
 
-    ionViewDidLoad() {
-        this.getPosts();
-    }
 
-    getPosts() {
+    getdata() {
         let loader = this.loadingCtrl.create({
             content: "Loading Photos..."
         });
         loader.present();
-        this.postService.getPosts().subscribe((val) => {
-            this.posts = val.posts;
-            loader.dismiss();
-        });
+        this.postService.getJsonData().subscribe(
+
+            result => {
+                this.newsData = result.posts;
+                console.log("Success : " + this.newsData);
+            },
+            err => {
+                console.error("Error : " + err);
+            },
+            () => {
+                console.log('getData completed');
+            }
+            
+        );
+        loader.dismiss();
     }
 
+   
 
 
 

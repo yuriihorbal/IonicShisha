@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { NavController, LoadingController, ActionSheetController } from 'ionic-angular';
 import { File, Camera, Transfer } from 'ionic-native';
-import { ListPage } from '../list/list';
+import { HomePage } from '../home/home';
+
 
 declare var cordova: any;
 
@@ -33,24 +34,24 @@ export class Newpost {
         });
         loader.present();
 
-        let filename = this.imagePath.split('/').pop();
+        let filename = this.imagePath;
         let options = {
             fileKey: "file",
             fileName: filename,
             chunkedMode: false,
             mimeType: "image/jpg",
-            params: { 'title': this.postTitle, 'description': this.desc }
+            params: { 'title': "asd" }
         };
 
 
         const fileTransfer = new Transfer();
 
-        fileTransfer.upload(this.imageNewPath, 'https://shishaupload.herokuapp.com/api/v1/post/upload',
+        fileTransfer.upload(this.imageNewPath, 'https://photocloudapp.herokuapp.com/api/v1/post/upload',
             options).then((entry) => {
                 this.imagePath = '';
                 this.imageChosen = 0;
                 loader.dismiss();
-                this.navCtrl.setRoot(ListPage);
+                this.navCtrl.setRoot(HomePage);
             }, (err) => {
                 alert(JSON.stringify(err));
             });

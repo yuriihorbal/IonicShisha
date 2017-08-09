@@ -10,7 +10,9 @@ import { ListPage } from '../pages/list/list';
 import { Newpost } from '../pages/newpost/newpost';
 import { Camera } from '@ionic-native/camera';
 import { EmailComposer } from '@ionic-native/email-composer';
-import { PostService } from '../providers/post-service/post-service';
+import { PostService } from '../providers/post-service';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+
 
 @NgModule({
     declarations: [

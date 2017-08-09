@@ -7,8 +7,9 @@
     "\\src\\pages",
     "\\src\\pages\\home",
     "\\src\\pages\\list",
-    "\\src\\theme"
+    "\\src\\pages\\newpost",
+    "\\src\\providers"
   ],
-  "SelectedNode": "\\src\\index.html",
+  "SelectedNode": "\\src\\app\\app.component.ts",
   "PreviewInSolutionExplorer": false
 }
